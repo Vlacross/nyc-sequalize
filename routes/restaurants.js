@@ -6,7 +6,7 @@ const { Restaurant, Grade } = require('../models');
 router.get('/', (req, res) => {
   Restaurant.findAll(
     {
-      limit: 50,
+      limit: 15,
       include: [{
         model: Grade,
         as: 'grades'
@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
     }
   )
   .then(restaurants => {
-    console.log(restaurants)
+    console.log(restaurants[0])
+    console.log(restaurants[0].apiRepr())
     res.json({
     restaurants: restaurants.map(rest => rest.apiRepr())
   })})
