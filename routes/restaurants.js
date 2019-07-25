@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
     }
   )
   .then(restaurants => {
+    console.log(restaurants[0] instanceof Restaurant)
     console.log(restaurants[0])
-    console.log(restaurants[0].apiRepr())
     res.json({
     restaurants: restaurants.map(rest => rest.apiRepr())
   })})
@@ -23,13 +23,18 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  Restaurants.findById(req.params.id, {
+  Restaurant.findAll({
+    limit: 1,
+    where: {
+      id: req.params.id
+    }
+  }, {
     include: [{
       model: Grade,
       as: 'grades'
     }]
   })
-  .then(restaurant => res.json(restaurant.apiRepr()))
+  .then(restaurant => res.json(restaurant[0].apiRepr()))
 });
 
 
