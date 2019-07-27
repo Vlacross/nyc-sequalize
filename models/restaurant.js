@@ -8,13 +8,13 @@ class Restaurant extends Sequelize.Model {
   apiRepr() {
     return {
       id: this.id,
-          name: this.name,
-          cuisine: this.cuisine,
-          borough: this.borough,
-          address: {
-          number: this.addressBuildingNumber,
-          street: this.addressStreet,
-          zip: this.addressZipcode,
+      name: this.name,
+      cuisine: this.cuisine,
+      borough: this.borough,
+      address: {
+      number: this.addressBuildingNumber,
+      street: this.addressStreet,
+      zip: this.addressZipcode,
       },
     mostRecentGrade: this.mostRecentGrade ? this.mostRecentGrade.apiRepr() : null
     }
