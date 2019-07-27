@@ -9,7 +9,7 @@ const DATABASE_URL = (
 const TEST_DATABASE_URL = (
   process.env.TEST_DATABASE_URL ||
   global.TEST_DATABASE_URL ||
-  'test_nyc_dev'
+  'test_nyc_test'
 );
 
 const DATABASE_USER = process.env.DATABASE_USER;
