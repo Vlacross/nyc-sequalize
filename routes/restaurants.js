@@ -14,12 +14,25 @@ router.get('/', (req, res) => {
     }
   )
   .then(restaurants => {
-    console.log(restaurants[0] instanceof Restaurant)
-    console.log(restaurants[0])
     res.json({
     restaurants: restaurants.map(rest => rest.apiRepr())
   })})
 });
+
+router.get('/grades/:id', (req, res) => {
+  Grade.findAll(
+    {
+      limit: 15,
+      where: {
+        restaurant_id: req.params.id
+      }
+    }
+  )
+  .then(grades => {
+    console.log(grades.length)
+    res.json(grades)
+  })
+})
 
 
 router.get('/:id', (req, res) => {
